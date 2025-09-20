@@ -1,0 +1,23 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.cache
+*.log
+*.pdb
+*.dbmdl
+*.vspscc
+*.vssscc
+*.psess
+*.vsp
+*.sdf
+*.opensdf
+*.sln.docstates
+
+# Build output
+bin/
+obj/
+
+# NuGet
+*.nupkg
+packages/
