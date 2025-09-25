@@ -12,58 +12,58 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Threading;
 
-namespace Štoperica
+namespace Stopwatch
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        Stopwatch stopwatch = new Stopwatch();
+        System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
         DispatcherTimer clockTimer = new DispatcherTimer();
         DispatcherTimer stopwatchTimer = new DispatcherTimer();
-        
-
-
 
         public MainWindow()
         {
             InitializeComponent();
 
-            
-            // Timer za sat
+            // Initialize and start the clock timer to update current time display
             clockTimer.Interval = TimeSpan.FromMilliseconds(100);
             clockTimer.Tick += ClockTimer_Click;
             clockTimer.Start();
 
-            // Timer za štopericu
+            // Initialize stopwatch timer to refresh elapsed time display
             stopwatchTimer.Interval = TimeSpan.FromMilliseconds(100);
             stopwatchTimer.Tick += Timer_Tick;
 
         }
 
+        // Event handler for updating stopwatch display every 100ms
         private void  Timer_Tick(object? sender,EventArgs e)
         {
             TimeDisplay.Text = stopwatch.Elapsed.ToString(@"hh\:mm\:ss");
         }
 
-
-        private void ClockTimer_Click(object? sender, EventArgs e)
+        // Event handler for updating the clock display with current system time
+        private void ClockTimer_Click(object sender, EventArgs e)
         {
             Sat.Text = DateTime.Now.ToString(@"HH\:mm\:ss");
         }
 
-       private void Start_Click(object sender,RoutedEventArgs e)
+        // Start button click: begins stopwatch and starts UI refresh timer
+        private void Start_Click(object sender,RoutedEventArgs e)
         {
             stopwatch.Start();
             stopwatchTimer.Start();
         }
 
+        // Stop button click: pauses stopwatch but keeps elapsed time visible
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
             stopwatch.Stop();
         }
 
+        // Reset button click: clears stopwatch and resets display to zero
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
             stopwatch.Restart();

@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace Štoperica
+namespace Stopwatch
 {
     /// <summary>
     /// Interaction logic for App.xaml
